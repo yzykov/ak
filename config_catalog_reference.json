@@ -1,0 +1,93 @@
+{
+  "target": {
+    "catalog_url": "https://akomfort.tech/catalog/",
+    "api_base": "https://akomfort.tech/local/api/products/",
+    "iblock_id": 5,
+    "excluded_section_codes": [
+      "zapchasty"
+    ]
+  },
+  "sources": [
+    {
+      "name": "gkgross",
+      "url": "https://gkgross.ru/",
+      "mode": "sitemap_catalog",
+      "product_prefix": "/catalog/",
+      "allowed_image_hosts": [
+        "gkgross.ru",
+        "www.gkgross.ru"
+      ],
+      "excluded_paths": [
+        "/catalog/zapchasty/",
+        "/catalog/zapchasti/"
+      ],
+      "min_product_path_segments": 3
+    },
+    {
+      "name": "liftnet",
+      "url": "https://www.liftnet.ru/katalog/dorozhno-stroitelnaja-tehnika/",
+      "mode": "listing",
+      "product_prefix": "/product/",
+      "allowed_image_hosts": [
+        "liftnet.ru",
+        "www.liftnet.ru"
+      ],
+      "source_id_pattern": "-(?P<id>\\d{4,12})/?$"
+    },
+    {
+      "name": "valmo",
+      "url": "https://valmo-rus.ru/catalog/",
+      "mode": "catalog_tree",
+      "product_prefix": "/catalog/",
+      "allowed_image_hosts": [
+        "valmo-rus.ru",
+        "www.valmo-rus.ru"
+      ],
+      "excluded_paths": [
+        "/catalog/zapchasti/",
+        "/catalog/zapchasty/"
+      ],
+      "min_product_path_segments": 4
+    }
+  ],
+  "taxonomy": {
+    "minimum_match_score": 90,
+    "minimum_margin": 9,
+    "section_aliases": {
+      "valmo/catalog/shacman/sedelnye-tyagachi1/": "sedelnye-tyagachi",
+      "liftnet/product/lonking-": "dorozhno-stroitelnaya-tekhnika"
+    }
+  },
+  "images": {
+    "enabled": true,
+    "max_images_per_product": 8,
+    "max_bytes_each": 7340032,
+    "gallery_property": "auto",
+    "require_main_image_for_activation": true
+  },
+  "safety": {
+    "max_deactivate": 5,
+    "max_deactivate_percent": 5,
+    "min_relative_to_baseline": 0.85,
+    "require_baseline_for_deactivation": true,
+    "allow_missing_catalog_categories": false,
+    "require_clean_review_for_deactivation": true,
+    "protected_section_codes": [
+      "kommercheskiy-transport",
+      "zapchasty"
+    ]
+  },
+  "network": {
+    "timeout_sec": 30,
+    "delay_sec": 1.0,
+    "max_pages": 1500,
+    "max_listing_pages": 100,
+    "checkpoint_every": 10,
+    "bitrix_read_attempts": 3,
+    "bitrix_retry_delay_sec": 1.5
+  },
+  "registry": {
+    "type": "bitrix_json",
+    "endpoint": "matching.php"
+  }
+}
